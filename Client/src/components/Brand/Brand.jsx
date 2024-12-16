@@ -9,6 +9,10 @@ import brandmb2 from "../../../public/assets/brand-mb-2.svg";
 import brandmb3 from "../../../public/assets/brand-mb-3.svg";
 import brandmb4 from "../../../public/assets/brand-mb-4.svg";
 import brandmb5 from "../../../public/assets/brand-mb-5.svg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Autoplay } from 'swiper/modules';
 const Brand = () => {
   const brands = [
     {
@@ -53,15 +57,24 @@ const Brand = () => {
             <img src={item.img} alt="" key={index} className="mr-7 md:mr-24" />
           ))}
         </div>
-        <div className="md:hidden flex items-center justify-center flex-wrap">
-          {brands2.map((item, index) => (
-            <img
-            src={item.img}
-            alt=""
-            key={index}
-            className={`mr-8 ${index < brands2.length - 1 ? "mb-5" : ""}`}
-          />
-          ))}
+        <div className="md:hidden">
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={16}
+            loop={true}
+            autoplay={{ delay: 2000 }}
+            modules={[Autoplay]}
+          >
+            {brands2.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img
+                  src={item.img}
+                  alt=""
+                  // className="w-full h-auto"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -9,44 +10,48 @@ import product3 from "../../../public/assets/product-3.png";
 import product4 from "../../../public/assets/product-4.png";
 
 const Arrivals = () => {
-    const products = [
-        {
-          id: 1,
-          image: product1,
-          name: "T-shirt With Tape Details",
-          rating: 4.5,
-          price: 120,
-          originalPrice: null,
-          discount: null,
-        },
-        {
-          id: 2,
-          image: product2,
-          name: "Skinny Fit Jeans",
-          rating: 3.5,
-          price: 240,
-          originalPrice: 260,
-          discount: 20,
-        },
-        {
-          id: 3,
-          image: product3,
-          name: "Checkered Shirt",
-          rating: 4.5,
-          price: 180,
-          originalPrice: null,
-          discount: null,
-        },
-        {
-          id: 4,
-          image: product4,
-          name: "Sleeve Striped T-shirt",
-          rating: 4.5,
-          price: 130,
-          originalPrice: 160,
-          discount: 30,
-        },
-      ];
+  const products = [
+    {
+      id: 1,
+      image: product1,
+      name: "T-shirt With Tape Details",
+      link: "/product-details",
+      rating: 4.5,
+      price: 120,
+      originalPrice: null,
+      discount: null,
+    },
+    {
+      id: 2,
+      image: product2,
+      name: "Skinny Fit Jeans",
+      link: "/product-details",
+      rating: 3.5,
+      price: 240,
+      originalPrice: 260,
+      discount: 20,
+    },
+    {
+      id: 3,
+      image: product3,
+      name: "Checkered Shirt",
+      link: "/product-details",
+      rating: 4.5,
+      price: 180,
+      originalPrice: null,
+      discount: null,
+    },
+    {
+      id: 4,
+      image: product4,
+      name: "Sleeve Striped T-shirt",
+      link: "/product-details",
+      rating: 4.5,
+      price: 130,
+      originalPrice: 160,
+      discount: 30,
+    },
+  ];
 
   return (
     <div className="container mx-auto px-4 pt-12 md:pt-16">
@@ -55,12 +60,16 @@ const Arrivals = () => {
       </h2>
 
       <div className="hidden md:grid grid-cols-4 items-center">
-      {products.map((product) => (
+        {products.map((product) => (
           <div key={product.id}>
-            <img src={product.image} alt="" />
-            <h5 className="text-black font-bold text-xl capitalize mt-4">
-              {product.name}
-            </h5>
+            <Link to={product.link}>
+              <img src={product.image} alt="" />
+            </Link>
+            <Link to={product.link}>
+              <h5 className="text-black font-bold text-xl capitalize mt-4">
+                {product.name}
+              </h5>
+            </Link>
             <div className="flex items-center mt-3">
               {Array.from({ length: Math.floor(product.rating) }, (_, i) => (
                 <img key={i} src="/assets/star.svg" alt="" />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -14,6 +15,7 @@ const TopSelling = () => {
       id: 1,
       image: product5,
       name: "VERTICAL STRIPED SHIRT",
+      link: "/product-details",
       rating: 5.0,
       price: 212,
       originalPrice: 232,
@@ -23,6 +25,7 @@ const TopSelling = () => {
       id: 2,
       image: product6,
       name: "COURAGE GRAPHIC T-SHIRT",
+      link: "/product-details",
       rating: 4.0,
       price: 145,
       originalPrice: null,
@@ -32,6 +35,7 @@ const TopSelling = () => {
       id: 3,
       image: product7,
       name: "LOOSE FIT BERMUDA SHORTS",
+      link: "/product-details",
       rating: 3.0,
       price: 80,
       originalPrice: null,
@@ -41,6 +45,7 @@ const TopSelling = () => {
       id: 4,
       image: product8,
       name: "FADED SKINNY JEANS",
+      link: "/product-details",
       rating: 4.5,
       price: 210,
       originalPrice: null,
@@ -56,10 +61,14 @@ const TopSelling = () => {
       <div className="hidden md:grid grid-cols-4 items-center">
         {products.map((product) => (
           <div key={product.id}>
-            <img src={product.image} alt="" />
-            <h5 className="text-black font-bold text-xl capitalize mt-4">
-              {product.name}
-            </h5>
+            <Link to={product.link}>
+              <img src={product.image} alt="" />
+            </Link>
+            <Link to={product.link}>
+              <h5 className="text-black font-bold text-xl capitalize mt-4">
+                {product.name}
+              </h5>
+            </Link>
             <div className="flex items-center mt-3">
               {Array.from({ length: Math.floor(product.rating) }, (_, i) => (
                 <img key={i} src="/assets/star.svg" alt="" />
