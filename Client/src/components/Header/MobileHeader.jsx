@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +31,7 @@ const MobileHeader = () => {
           </button>
 
           {/* Logo */}
-          <h1 className="font-['Merriweather'] text-2xl font-bold">SHOP.CO</h1>
+          <Link to="/" className="font-['Merriweather'] text-2xl font-bold">SHOP.CO</Link>
         </div>
 
         {/* Dropdown Menu */}

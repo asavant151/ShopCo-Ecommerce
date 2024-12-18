@@ -12,45 +12,44 @@ const TabsComponent = () => {
       name: 'Samantha D.',
       review: 'I absolutely love this t-shirt! The design is unique and the fabric feels so comfortable.',
       date: 'August 14, 2023',
-      rating: 5, // Example rating
+      rating: 5,
     },
     {
       name: 'Ethan R.',
       review: 'This t-shirt is a must-have for anyone who appreciates good design.',
       date: 'August 16, 2023',
-      rating: 4.5, // Example rating
+      rating: 4.5,
     },
     {
       name: 'Liam K.',
       review: 'This t-shirt is a fusion of comfort and creativity.',
       date: 'August 18, 2023',
-      rating: 3.5, // Example rating
+      rating: 3.5,
     },
     {
       name: 'Alex M.',
       review: 'The t-shirt exceeded my expectations! The colors are vibrant and the print quality is top-notch.',
       date: 'August 15, 2023',
-      rating: 2, // Example rating
+      rating: 2,
     },
     {
       name: 'Olivia P.',
       review: 'As a UI/UX enthusiast, I value simplicity and functionality.',
       date: 'August 17, 2023',
-      rating: 1.5, // Example rating
+      rating: 1.5,
     },
     {
       name: 'Ava H.',
       review: 'I’m not just wearing a t-shirt; I’m wearing a piece of design philosophy.',
       date: 'August 19, 2023',
-      rating: 4, // Example rating
+      rating: 4,
     },
   ]);
 
-  const [gridLayout, setGridLayout] = useState(2); // Default grid layout (3 columns)
-  console.log("gridLayout==>", gridLayout);
-  
-  const [sortBy, setSortBy] = useState('latest'); // Default sorting by latest
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal
+  const [gridLayout, setGridLayout] = useState(2);
+
+  const [sortBy, setSortBy] = useState('latest');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
 
   const faqs = [
@@ -140,29 +139,26 @@ const TabsComponent = () => {
   });
 
   return (
-    <div className="p-4">
+    <div className="py-12">
       {/* Tabs */}
-      <div className="flex border-b">
+      <div className="flex items-center justify-evenly border-b border-solid border-black/10 mb-8">
         <button
-          className={`px-4 py-2 ${
-            activeTab === 'productDetails' ? 'border-b-2 border-blue-500 text-blue-500' : ''
-          }`}
+          className={`px-4 py-2 ${activeTab === 'productDetails' ? 'font-medium md:text-xl text-md   border-b-2 border-black text-black' : 'text-black/60 font-normal md:text-xl text-md'
+            }`}
           onClick={() => handleTabChange('productDetails')}
         >
           Product Details
         </button>
         <button
-          className={`px-4 py-2 ${
-            activeTab === 'ratingReviews' ? 'border-b-2 border-blue-500 text-blue-500' : ''
-          }`}
+          className={`px-4 py-2 ${activeTab === 'ratingReviews' ? 'font-medium md:text-xl text-md border-b-2 border-black text-black' : 'text-black/60 font-normal md:text-xl text-md'
+            }`}
           onClick={() => handleTabChange('ratingReviews')}
         >
           Rating & Reviews
         </button>
         <button
-          className={`px-4 py-2 ${
-            activeTab === 'faqs' ? 'border-b-2 border-blue-500 text-blue-500' : ''
-          }`}
+          className={`px-4 py-2 ${activeTab === 'faqs' ? 'font-medium md:text-xl text-md border-b-2 border-black text-black' : 'text-black/60 font-normal md:text-xl text-md'
+            }`}
           onClick={() => handleTabChange('faqs')}
         >
           FAQs
@@ -173,7 +169,7 @@ const TabsComponent = () => {
       <div className="mt-4">
         {activeTab === 'productDetails' && (
           <div>
-            <h2 className="text-xl font-bold">Product Details</h2>
+            <h2 className="text-xl font-bold mb-4">ONE LIFE GRAPHIC T-SHIRT</h2>
             <p>
               This graphic t-shirt is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style. The design is unique and reflects the creativity of the designer.
             </p>
@@ -181,143 +177,136 @@ const TabsComponent = () => {
         )}
 
         {activeTab === 'ratingReviews' && (
-         <div>
-         <h2 className="text-xl font-bold">Rating & Reviews</h2>
-         <div className="flex items-center justify-between">
-           <div className="flex items-center">
-             {/* Dynamic star rating and score */}
-             {renderStarRating(4.5)}
-             <span className="ml-2">4.5/5</span>
-           </div>
-           <div className="items-center space-x-2 md:flex hidden">
-             {/* Grid layout icons */}
-             <FaThLarge
-               className={`cursor-pointer ${gridLayout === 3 ? 'text-blue-500' : ''}`}
-               onClick={() => handleGridLayoutChange(3)}
-             />
-             <FaTh
-               className={`cursor-pointer ${gridLayout === 2 ? 'text-blue-500' : ''}`}
-               onClick={() => handleGridLayoutChange(2)}
-             />
-             <FaThList
-               className={`cursor-pointer ${gridLayout === 1 ? 'text-blue-500' : ''}`}
-               onClick={() => handleGridLayoutChange(1)}
-             />
-           </div>
-         </div>
+          <div>
 
-         <div className="mt-4 flex justify-between items-center">
-           <div>
-             <span className="font-bold">All Reviews ({reviews.length})</span>
-           </div>
-           <div>
-             {/* Sorting select box */}
-             <select
-               className="border p-1"
-               value={sortBy}
-               onChange={handleSortChange}
-             >
-               <option value="latest">Latest</option>
-               <option value="oldest">Oldest</option>
-             </select>
-           </div>
-         </div>
+            <div className="mt-4 flex justify-between items-center mb-8">
+              <div>
+                <p className="font-bold text-black text-2xl">All Reviews <span className='text-black/60 font-normal text-base'>({reviews.length})</span></p>
+              </div>
+              <div className="flex items-center">
+                <div className="items-center space-x-2 md:flex hidden mr-4">
+                  {/* Grid layout icons */}
+                  <FaThLarge
+                    className={`cursor-pointer ${gridLayout === 3 ? 'text-blue-500' : ''}`}
+                    onClick={() => handleGridLayoutChange(3)}
+                  />
+                  <FaTh
+                    className={`cursor-pointer ${gridLayout === 2 ? 'text-blue-500' : ''}`}
+                    onClick={() => handleGridLayoutChange(2)}
+                  />
+                  <FaThList
+                    className={`cursor-pointer ${gridLayout === 1 ? 'text-blue-500' : ''}`}
+                    onClick={() => handleGridLayoutChange(1)}
+                  />
+                </div>
+                <div className='mr-4'>
+                  {/* Sorting select box */}
+                  <select
+                    className="py-3 px-5 bg-[#F0F0F0] rounded-[62px]"
+                    value={sortBy}
+                    onChange={handleSortChange}
+                  >
+                    <option value="latest">Latest</option>
+                    <option value="oldest">Oldest</option>
+                  </select>
+                </div>
+                {/* Write a Review Button */}
+                <button
+                  className="bg-black text-white font-medium text-base px-4 py-3 w-full rounded-[62px]"
+                  onClick={openReviewModal}
+                >
+                  Write a Review
+                </button>
+              </div>
+            </div>
 
-         <div className={`grid gap-4 mt-4 ${
-                gridLayout === 3 ? 'grid-cols-3' : gridLayout === 2 ? 'grid-cols-2' : 'grid-cols-1'
-              } md:grid-cols-${gridLayout}`}>
-           {sortedReviews.slice(0, showAllReviews ? sortedReviews.length : 6).map((review, index) => (
-             <div key={index} className="border p-4 rounded-lg">
-               <div className="font-bold">{review.name}</div>
-               <div className="text-sm text-gray-500">{review.date}</div>
-               <div className="flex items-center">
-                 {/* Dynamic star rating for each review */}
-                 {renderStarRating(review.rating)}
-                 <span className="ml-2">{review.rating}/5</span>
-               </div>
-               <div>{review.review}</div>
-             </div>
-           ))}
-         </div>
+            <div className={`grid gap-4 mt-4 ${gridLayout === 3 ? 'grid-cols-1 md:grid-cols-3' : gridLayout === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'
+              }`}>
+              {sortedReviews.slice(0, showAllReviews ? sortedReviews.length : 6).map((review, index) => (
+                <div key={index} className="border border-solid border-black/10 p-4 rounded-[20px]">
+                  {renderStarRating(review.rating)}
+                  <div className="flex items-center mt-4">
+                    <div className="font-bold text-black text-xl mr-1">{review.name}</div>
+                    <img src="/assets/right-tick.svg" alt="" />
+                  </div>
+                  <div className="text-black/60 mb-6 mt-3">{review.review}</div>
+                  <div className="text-black/60 font-medium">Posted on {review.date}</div>
+                </div>
+              ))}
+            </div>
+            <div className='text-center mt-9'>
+              <button
+                type='button'
+                className="bg-white hover:bg-black border border-solid border-black/10 rounded-[62px] py-4 px-14 text-black hover:text-white transition-all duration-500 ease-in-out font-medium text-base md:w-auto w-full"
+                onClick={handleShowMoreReviews}
+              >
+                {showAllReviews ? 'Show Less' : 'Load More Reviews'}
+              </button>
+            </div>
 
-         <button
-           className="mt-4 bg-blue-500 text-white px-4 py-2"
-           onClick={handleShowMoreReviews}
-         >
-           {showAllReviews ? 'Show Less' : 'Load More Reviews'}
-         </button>
 
-         {/* Write a Review Button */}
-         <button
-           className="mt-4 bg-green-500 text-white px-4 py-2"
-           onClick={openReviewModal}
-         >
-           Write a Review
-         </button>
-
-         {/* Add Review Modal */}
-         {isModalOpen && (
-           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-             <div className="bg-white p-6 rounded-lg w-1/2">
-               <h2 className="text-xl font-bold mb-4">Write a Review</h2>
-               <form
-                 onSubmit={(e) => {
-                   e.preventDefault();
-                   const newReview = {
-                     name: e.target.name.value,
-                     review: e.target.review.value,
-                     date: new Date().toLocaleDateString(),
-                     rating: parseFloat(e.target.rating.value),
-                   };
-                   addReview(newReview);
-                 }}
-               >
-                 <div className="mb-4">
-                   <label htmlFor="name" className="block font-bold">Name</label>
-                   <input
-                     type="text"
-                     id="name"
-                     name="name"
-                     className="border p-2 w-full"
-                     required
-                   />
-                 </div>
-                 <div className="mb-4">
-                   <label htmlFor="review" className="block font-bold">Review</label>
-                   <textarea
-                     id="review"
-                     name="review"
-                     className="border p-2 w-full"
-                     required
-                   />
-                 </div>
-                 <div className="mb-4">
-                   <label htmlFor="rating" className="block font-bold">Rating</label>
-                   <input
-                     type="number"
-                     id="rating"
-                     name="rating"
-                     min="1"
-                     max="5"
-                     step="0.5"
-                     className="border p-2 w-full"
-                     required
-                   />
-                 </div>
-                 <div className="flex justify-end">
-                   <button type="submit" className="bg-blue-500 text-white px-4 py-2">Submit</button>
-                   <button type="button" className="ml-2 bg-gray-300 px-4 py-2" onClick={closeReviewModal}>Cancel</button>
-                 </div>
-               </form>
-             </div>
-           </div>
-         )}
-       </div>
+            {/* Add Review Modal */}
+            {isModalOpen && (
+              <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+                <div className="bg-white p-6 rounded-lg w-1/2">
+                  <h2 className="text-xl font-bold mb-4">Write a Review</h2>
+                  <form
+                    onSubmit={(e) => {
+                      e.preventDefault();
+                      const newReview = {
+                        name: e.target.name.value,
+                        review: e.target.review.value,
+                        date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+                        rating: parseFloat(e.target.rating.value),
+                      };
+                      addReview(newReview);
+                    }}
+                  >
+                    <div className="mb-4">
+                      <label htmlFor="name" className="block font-bold mb-3">Name</label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        className="border p-2 w-full rounded-[20px]"
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="review" className="block font-bold mb-3">Review</label>
+                      <textarea
+                        id="review"
+                        name="review"
+                        className="border p-2 w-full rounded-[20px]"
+                        required
+                      />
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="rating" className="block font-bold mb-3">Rating</label>
+                      <input
+                        type="number"
+                        id="rating"
+                        name="rating"
+                        min="1"
+                        max="5"
+                        step="0.5"
+                        className="border p-2 w-full rounded-[20px]"
+                        required
+                      />
+                    </div>
+                    <div className="flex justify-end">
+                      <button type="submit" className="bg-black text-white font-medium text-base px-4 py-3 rounded-[62px]">Submit</button>
+                      <button type="button" className="ml-2 bg-[#F0F0F0] text-black font-medium text-base px-4 py-3 rounded-[62px]" onClick={closeReviewModal}>Cancel</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+          </div>
         )}
 
         {activeTab === 'faqs' && (
           <div>
-            <h2 className="text-xl font-bold">FAQs</h2>
             <div className="mt-4">
               {faqs.map((faq, index) => (
                 <div key={index} className="mb-4 border-b pb-2">

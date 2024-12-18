@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { FaTwitter, FaInstagram, FaFacebook, FaGithub } from "react-icons/fa";
 
 const Footer = () => {
     return (
@@ -24,53 +25,80 @@ const Footer = () => {
                         {/* SHOP.CO Section */}
                         <div>
                             <h3 className="font-['Merriweather'] text-[20px] md:text-[33px] font-bold uppercase mb-4">SHOP.CO</h3>
-                            <p className="text-gray-400 mb-4">
+                            <p className="text-black/60 mb-4">
                                 We have clothes that suits your style and which you’re proud to
                                 wear. From women to men.
                             </p>
+                            {/* Social Icons */}
+                            <div className="flex space-x-4">
+                                <a
+                                    href="#"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-black transition duration-300"
+                                >
+                                    <FaTwitter className="text-lg" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-black transition duration-300"
+                                >
+                                    <FaInstagram className="text-lg" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-black transition duration-300"
+                                >
+                                    <FaFacebook className="text-lg" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white hover:bg-black transition duration-300"
+                                >
+                                    <FaGithub className="text-lg" />
+                                </a>
+                            </div>
                         </div>
 
                         {/* COMPANY Section */}
                         <div>
                             <h3 className="text-xl font-medium mb-4">COMPANY</h3>
-                            <ul className="text-gray-400 space-y-2">
-                                <li><Link to={'/about'}>About</Link></li>
-                                <li><Link to={'/features'}>Features</Link></li>
-                                <li><Link to={'/works'}>Works</Link></li>
-                                <li><Link to={'/career'}>Career</Link></li>
+                            <ul className="text-black/60 space-y-2">
+                                <li><Link to={'/about'} className='text-black/60'>About</Link></li>
+                                <li><Link to={'/features'} className='text-black/60'>Features</Link></li>
+                                <li><Link to={'/works'} className='text-black/60'>Works</Link></li>
+                                <li><Link to={'/career'} className='text-black/60'>Career</Link></li>
                             </ul>
                         </div>
 
                         {/* HELP Section */}
                         <div>
                             <h3 className="text-xl font-medium mb-4">HELP</h3>
-                            <ul className="text-gray-400 space-y-2">
-                                <li><Link to={'/customer-support'}>Customer Support</Link></li>
-                                <li><Link to={'/delivery-details'}>Delivery Details</Link></li>
-                                <li><Link to={'/terms-and-conditions'}>Terms & Conditions</Link></li>
-                                <li><Link to={'/privacy-policy'}>Privacy Policy</Link></li>
-                                <li><Link to={'/faq'}>FAQ</Link></li>
+                            <ul className="space-y-2">
+                                <li><Link to={'/customer-support'} className='text-black/60'>Customer Support</Link></li>
+                                <li><Link to={'/delivery-details'} className='text-black/60'>Delivery Details</Link></li>
+                                <li><Link to={'/terms-and-conditions'} className='text-black/60'>Terms & Conditions</Link></li>
+                                <li><Link to={'/privacy-policy'} className='text-black/60'>Privacy Policy</Link></li>
+                                <li><Link to={'/faq'} className='text-black/60'>FAQ</Link></li>
                             </ul>
                         </div>
 
                         {/* ACCOUNT Section */}
                         <div>
                             <h3 className="text-xl font-medium mb-4">ACCOUNT</h3>
-                            <ul className="text-gray-400 space-y-2">
-                                <li><Link to={'/manage-deliveries'}>Manage Deliveries</Link></li>
-                                <li><Link to={'/orders'}>Orders</Link></li>
-                                <li><Link to={'/payments'}>Payments</Link></li>
+                            <ul className="space-y-2">
+                                <li><Link to={'/manage-deliveries'} className='text-black/60'>Manage Deliveries</Link></li>
+                                <li><Link to={'/orders'} className='text-black/60'>Orders</Link></li>
+                                <li><Link to={'/payments'} className='text-black/60'>Payments</Link></li>
                             </ul>
                         </div>
 
                         {/* RESOURCES Section */}
                         <div>
                             <h3 className="text-xl font-medium mb-4">RESOURCES</h3>
-                            <ul className="text-gray-400 space-y-2">
-                                <li><Link to={'/free-ebooks'}>Free eBooks</Link></li>
-                                <li><Link to={'/development-tutorial'}>Development Tutorial</Link></li>
-                                <li><Link to={'/how-to-blog'}>How to - Blog</Link></li>
-                                <li><Link to={'/youtube-playlist'}>Youtube Playlist</Link></li>
+                            <ul className="space-y-2">
+                                <li><Link to={'/free-ebooks'} className='text-black/60'>Free eBooks</Link></li>
+                                <li><Link to={'/development-tutorial'} className='text-black/60'>Development Tutorial</Link></li>
+                                <li><Link to={'/how-to-blog'} className='text-black/60'>How to - Blog</Link></li>
+                                <li><Link to={'/youtube-playlist'} className='text-black/60'>Youtube Playlist</Link></li>
                             </ul>
                         </div>
                     </div>

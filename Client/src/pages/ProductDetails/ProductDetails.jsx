@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FaChevronRight } from "react-icons/fa";
 import TabsComponent from '../../components/TabsComponent/TabsComponent';
+import LikeProduct from '../../components/LikeProduct/LikeProduct';
 
 const ProductDetails = () => {
   const [selectedColor, setSelectedColor] = useState(null);
@@ -58,7 +59,9 @@ const ProductDetails = () => {
               <a href="/shop/men" className="text-black/60 hover:text-black mr-1">Men</a>
             </li>
             <li className="text-black/60 mr-3"><FaChevronRight /></li>
-            <li className="text-black">T-shirts</li>
+            <li>
+              <a href="/shop/men/t-shirts" className="text-black">T-shirts</a>
+            </li>
           </ol>
         </nav>
         <div className="flex md:flex-row flex-col p-4">
@@ -170,6 +173,7 @@ const ProductDetails = () => {
           </div>
         </div>
         <TabsComponent />
+        <LikeProduct/>
       </div>
     </>
   );

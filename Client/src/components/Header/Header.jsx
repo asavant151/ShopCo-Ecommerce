@@ -15,7 +15,7 @@ const Header = () => {
       <div className="bg-white">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
           {/* Logo */}
-          <h1 className="font-['Merriweather'] text-[32px] font-extrabold mr-10">SHOP.CO</h1>
+          <Link to={"/"} className="font-['Merriweather'] text-[32px] font-extrabold mr-10">SHOP.CO</Link>
 
           {/* Nav Menu (Desktop) */}
           <nav className="hidden md:flex space-x-6">
