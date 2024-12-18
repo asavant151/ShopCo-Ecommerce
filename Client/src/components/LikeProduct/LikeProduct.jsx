@@ -54,7 +54,7 @@ const LikeProduct = () => {
     ];
 
     return (
-        <div className="container mx-auto px-4 pt-12 pb-12 md:pt-16">
+        <div className="container mx-auto px-4 pt-12 pb-20 md:pt-16">
             <h2 className="font-['Merriweather'] text-black text-[32px] md:text-[48px] font-bold uppercase mb-8 md:mb-14 text-center">
                 You might also like
             </h2>

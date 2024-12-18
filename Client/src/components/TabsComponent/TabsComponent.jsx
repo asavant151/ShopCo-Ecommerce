@@ -179,11 +179,11 @@ const TabsComponent = () => {
         {activeTab === 'ratingReviews' && (
           <div>
 
-            <div className="mt-4 flex justify-between items-center mb-8">
+            <div className="mt-4 flex md:flex-nowrap flex-wrap justify-between items-center mb-8">
               <div>
                 <p className="font-bold text-black text-2xl">All Reviews <span className='text-black/60 font-normal text-base'>({reviews.length})</span></p>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center md:mt-0 mt-4">
                 <div className="items-center space-x-2 md:flex hidden mr-4">
                   {/* Grid layout icons */}
                   <FaThLarge
@@ -248,7 +248,7 @@ const TabsComponent = () => {
             {/* Add Review Modal */}
             {isModalOpen && (
               <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-                <div className="bg-white p-6 rounded-lg w-1/2">
+                <div className="bg-white p-6 rounded-lg md:w-1/2 w-full">
                   <h2 className="text-xl font-bold mb-4">Write a Review</h2>
                   <form
                     onSubmit={(e) => {
