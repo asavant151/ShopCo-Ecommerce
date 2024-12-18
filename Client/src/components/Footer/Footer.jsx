@@ -109,7 +109,7 @@ const Footer = () => {
                         <p className="text-gray-400">
                             Shop.co © 2000-{new Date().getFullYear()}. All Rights Reserved
                         </p>
-                        <div className="flex space-x-4 mt-4">
+                        <div className="flex md:flex-nowrap flex-wrap md:space-x-4 space-x-1 mt-4">
                             <img src="/assets/visa.svg" alt="VISA" />
                             <img src="/assets/mastercard.svg" alt="MasterCard" />
                             <img src="/assets/paypal.svg" alt="PayPal" />
