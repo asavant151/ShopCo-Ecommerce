@@ -108,10 +108,14 @@ const TopSelling = () => {
           {products.map((product) => (
             <SwiperSlide key={product.id}>
               <div>
-                <img src={product.image} alt="" />
-                <h5 className="text-black font-bold text-base capitalize mt-4">
-                  {product.name}
-                </h5>
+                <Link to={product.link}>
+                  <img src={product.image} alt="" />
+                </Link>
+                <Link to={product.link}>
+                  <h5 className="text-black font-bold text-base capitalize mt-4">
+                    {product.name}
+                  </h5>
+                </Link>
                 <div className="flex items-center mt-3">
                   {Array.from(
                     { length: Math.floor(product.rating) },
