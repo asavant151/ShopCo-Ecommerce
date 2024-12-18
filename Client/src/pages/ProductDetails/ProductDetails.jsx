@@ -140,7 +140,7 @@ const ProductDetails = () => {
                 {sizes.map((size, index) => (
                   <div
                     key={index}
-                    className={`border border-black/60 rounded-[62px] bg-[#F0F0F0] px-4 py-2 mr-2 cursor-pointer ${selectedSize === size ? 'bg-black text-white' : ''
+                    className={`border border-black/60 rounded-[62px] bg-[#F0F0F0] px-4 py-2 mr-2 cursor-pointer md:mb-0 mb-3 ${selectedSize === size ? 'bg-black text-white' : ''
                       }`}
                     onClick={() => handleSizeChange(size)}
                   >
