@@ -1,13 +1,67 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const dropdownRef = useRef(null); // Ref for the dropdown container
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    // Add event listener when the dropdown is open
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    // Cleanup the event listener
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
+  // Handle scroll to show/hide header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsHeaderVisible(false);
+      } else {
+        // Scrolling up
+        setIsHeaderVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <header>
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="bg-black h-9 text-center">
         <p className="font-normal text-sm text-white py-2">
           Sign up and get 20% off to your first order.{" "}
-          <Link to={"/sign-up"} className="underline">
+          <Link to={"/register"} className="underline">
             Sign Up Now
           </Link>
         </p>
@@ -15,7 +69,9 @@ const Header = () => {
       <div className="bg-white">
         <div className="container mx-auto px-4 flex justify-between items-center py-4">
           {/* Logo */}
-          <Link to={"/"} className="font-['Merriweather'] text-[32px] font-extrabold mr-10">SHOP.CO</Link>
+          <Link to={"/"} className="font-['Merriweather'] text-[32px] font-extrabold mr-10">
+            SHOP.CO
+          </Link>
 
           {/* Nav Menu (Desktop) */}
           <nav className="hidden md:flex space-x-6">
@@ -43,7 +99,7 @@ const Header = () => {
           </div>
 
           {/* Cart and User Icons */}
-          <div className="flex space-x-4">
+          <div className="flex space-x-4 relative" ref={dropdownRef}>
             <button className="text-gray-700 hover:text-gray-900">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +116,7 @@ const Header = () => {
                 />
               </svg>
             </button>
-            <button className="text-gray-700 hover:text-gray-900">
+            <button onClick={toggleDropdown} className="text-gray-700 hover:text-gray-900">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -76,6 +132,24 @@ const Header = () => {
                 />
               </svg>
             </button>
+
+            {/* Dropdown Menu */}
+            {isDropdownOpen && (
+              <div className="absolute right-0 mt-10 w-48 bg-white border border-gray-200 rounded-lg shadow-lg">
+                <Link
+                  to="/login"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

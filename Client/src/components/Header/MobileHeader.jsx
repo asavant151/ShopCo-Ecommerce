@@ -1,12 +1,41 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const MobileHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+
+  // Handle scroll to show/hide header
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsHeaderVisible(false);
+      } else {
+        // Scrolling up
+        setIsHeaderVisible(true);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
 
   return (
-    <header className="bg-white md:hidden">
+    <header
+      className={`bg-white md:hidden fixed top-0 left-0 w-full z-50 transition-transform duration-300 ${
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="container mx-auto px-4 flex justify-between items-center py-4">
         <div className="flex items-center">
           {/* Hamburger Menu */}
@@ -31,7 +60,9 @@ const MobileHeader = () => {
           </button>
 
           {/* Logo */}
-          <Link to="/" className="font-['Merriweather'] text-2xl font-bold">SHOP.CO</Link>
+          <Link to="/" className="font-['Merriweather'] text-2xl font-bold">
+            SHOP.CO
+          </Link>
         </div>
 
         {/* Dropdown Menu */}
@@ -104,7 +135,10 @@ const MobileHeader = () => {
               />
             </svg>
           </button>
-          <button className="text-gray-700 hover:text-gray-900">
+          <button
+            onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+            className="text-gray-700 hover:text-gray-900 relative"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -119,6 +153,25 @@ const MobileHeader = () => {
                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
               />
             </svg>
+            {/* User Dropdown Menu */}
+            {isUserDropdownOpen && (
+              <div className="absolute top-8 right-0 w-48 bg-white shadow-md rounded-md">
+                <nav className="flex flex-col space-y-2 p-2">
+                  <Link
+                    to="/login"
+                    className="font-normal text-base text-black hover:text-gray-500"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="font-normal text-base text-black hover:text-gray-500"
+                  >
+                    Register
+                  </Link>
+                </nav>
+              </div>
+            )}
           </button>
         </div>
       </div>
