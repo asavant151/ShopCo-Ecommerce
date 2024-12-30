@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -10,6 +10,8 @@ import product3 from "../../../public/assets/product-3.png";
 import product4 from "../../../public/assets/product-4.png";
 
 const Arrivals = () => {
+  const navigate = useNavigate();
+
   const products = [
     {
       id: 1,
@@ -52,6 +54,10 @@ const Arrivals = () => {
       discount: 30,
     },
   ];
+
+  // const handleProductClick = (product) => {
+  //   navigate(`/category/${product.category}/${product.name}`);
+  // };
 
   return (
     <div className="container mx-auto px-4 pt-12 md:pt-16">
@@ -150,6 +156,7 @@ const Arrivals = () => {
       <div className="text-center mt-9">
         <button
           type="button"
+          onClick={() => navigate("/category")}
           className="bg-white hover:bg-black border border-solid border-black/10 rounded-[62px] py-4 px-14 text-black hover:text-white transition-all duration-500 ease-in-out font-medium text-base md:w-auto w-full"
         >
           View All
