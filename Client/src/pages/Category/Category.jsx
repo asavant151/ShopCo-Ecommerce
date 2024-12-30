@@ -241,7 +241,7 @@ const Category = () => {
                         {currentProducts.map((product) => (
                             <div key={product.id}>
                                 <Link to={product.link}>
-                                    <img src={product.image} alt="" />
+                                    <img src={product.image} alt="" className='w-full' />
                                 </Link>
                                 <Link to={product.link}>
                                     <h5 className="text-black font-bold text-xl capitalize mt-4">
